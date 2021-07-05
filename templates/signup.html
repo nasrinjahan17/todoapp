@@ -1,12 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
+{% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Signup Form</title>
+    <title>Sign Up</title>
 	<!--
     Template 2105 Input
 	http://www.tooplate.com/view/2105-input
@@ -31,13 +31,14 @@
                     <p class="grey-text mb-4">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                     <p class="grey-text">Vestibulum neque neque, porttitor quis lacinia eu, iaculis id dui. Mauris quis velit lectus.
                     </p>
-                    <h6>Already have an account.Please,<a href= "{% url 'todoapp:login' %}">Login</a></h6>
+                    <h6 class="white-text">Already have an account.Please,<a href= "{% url 'todoapp:login' %}">Login</a></h6>
                 </header>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12">
                 <form action="" method="post" class="tm-signup-form" novalidate>
                     {% csrf_token %}
-                    <div class="input-field">
+                    {{fm|crispy}}
+                    {% comment %} <div class="input-field">
                     {{ fm.username }}
                     </div>
         
@@ -51,7 +52,7 @@
 
                     <div class="input-field">
                     {{ fm.password2 }}
-                    </div>
+                    </div> {% endcomment %}
                     
                     <div class="text-right mt-4">
                     <button type="submit" class="waves-effect btn-large btn-large-white px-4 tm-border-radius-0">Sign Up</button>
@@ -59,9 +60,9 @@
                     
                 </form>
                 
-                <div class ="container mt-2">
+                {% comment %} <div class ="container mt-2">
                  {{fm.errors}}</p>
-                </div>
+                </div> {% endcomment %}
             
             </div>
         </div>
